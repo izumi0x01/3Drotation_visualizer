@@ -26,7 +26,7 @@ class SanJikuHyouji:
 
     def update(self,theta):
           self.quiver.remove()
-          self.quiver = self.axis.quiver(*self.get_arrow(theta))
+          self.quiver = self.axis.quiver(*self.get_arrow(theta),color = "green", length = 1,arrow_length_ratio = 0.1)
 
     def show(self):
           
