@@ -14,18 +14,19 @@ class SanJikuHyouji:
     def __init__(self):
         return
 
-    def get_arrow(self,u = 1,v = 0,w = 0,theta = 0):
+    def get_arrow(self,u = 0,v = 0,w = 0,theta = 0):
         targetVec = np.array([u,v,w])
         # axis = np.array([0, 1, 0])
         angle = np.pi*theta/180
-        rotationVec = targetVec*angle
+        DCM = np.array([[np.cos(angle),-np.sin(angle),0],[np.sin(angle),np.cos(angle),0],[0,0,1]])
+        rotationVec = np.dot(DCM,targetVec)
         print("θ: " + str(theta) + ", Vec: " + str(rotationVec))
         
         return rotationVec
 
     def update(self,theta):
           self.quiver.remove()
-          self.quiver = self.axis.quiver(0,0,0,*self.get_arrow(1,0,0,theta), color = "green", length = 1,arrow_length_ratio = 0.1)
+          self.quiver = self.axis.quiver(0,0,0,*self.get_arrow(0,1,0,theta), color = "green", length = 1,arrow_length_ratio = 0.1)
 
 
     def show(self):
