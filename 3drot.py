@@ -25,9 +25,13 @@ class SanJikuHyouji:
         return rotationVec
 
     def update(self,theta):
-          self.quiver.remove()
-          self.quiver = self.axis.quiver(0,0,0,*self.get_arrow(0,1,0,theta), color = "green", length = 1,arrow_length_ratio = 0.1)
-
+          self.quiverX.remove()
+          self.quiverY.remove()
+          self.quiverZ.remove()
+          self.quiverX = self.axis.quiver(0,0,0,*self.get_arrow(1,0,0,theta), color = "red", length = 1,arrow_length_ratio = 0.1)
+          self.quiverY = self.axis.quiver(0,0,0,*self.get_arrow(0,1,0,theta), color = "green", length = 1,arrow_length_ratio = 0.1)
+          self.quiverZ = self.axis.quiver(0,0,0,*self.get_arrow(0,0,1,theta), color = "blue", length = 1,arrow_length_ratio = 0.1)
+          
 
     def show(self):
           
@@ -39,7 +43,9 @@ class SanJikuHyouji:
           self.axis.set_ylim(-3, 3)
           self.axis.set_zlim(-3, 3)
 
-          self.quiver = self.axis.quiver(0,0,0,*self.get_arrow())
+          self.quiverX = self.axis.quiver(0,0,0,*self.get_arrow())
+          self.quiverY = self.axis.quiver(0,0,0,*self.get_arrow())
+          self.quiverZ = self.axis.quiver(0,0,0,*self.get_arrow())
 
           N = 100
 
