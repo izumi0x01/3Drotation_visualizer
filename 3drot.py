@@ -15,18 +15,18 @@ class SanJikuHyouji:
         return
 
     def get_arrow(self,theta):
-        x = np.cos(theta)
-        y = np.sin(theta)
+        x = 0
+        y = 0
         z = 0
-        u = np.sin(2*theta)
-        v = np.sin(3*theta)
-        w = np.cos(3*theta)
+        u = 1 + 0.01 * theta
+        v = 0
+        w = 0
         return x,y,z,u,v,w
     
 
     def update(self,theta):
           self.quiver.remove()
-          self.quiver = self.axis.quiver(*self.get_arrow(theta),color = "green", length = 1,arrow_length_ratio = 0.1)
+          self.quiver = self.axis.quiver(*self.get_arrow(theta), color = "green", length = 1,arrow_length_ratio = 0.1)
 
     def show(self):
           
@@ -41,7 +41,7 @@ class SanJikuHyouji:
           self.quiver = self.axis.quiver(*self.get_arrow(0))
 
           N = 100
-          ani = animation.FuncAnimation(self.fig, self.update, N, interval=10000/N, blit=False)
+          animation.FuncAnimation(self.fig, self.update, N, interval=10000/N, blit=False)
           plt.show()
           return
 
